@@ -1,4 +1,7 @@
 FROM rocker/tidyverse:latest
 
-RUN install2.r --error keras \
+RUN apt-get update -qq && apt-get -y --no-install-recommends install \
+  python3-pip \
+  && pip install --upgrade pip \
+  && install2.r --error keras \
   && r -e "keras::install_keras()"
