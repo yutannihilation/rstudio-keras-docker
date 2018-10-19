@@ -1,5 +1,8 @@
 FROM rocker/tidyverse:latest
 
+RUN mkdir /home/rstudio/keras
+WORKDIR /home/rstudio/keras
+
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
   python3-pip libpython3-dev \
   && pip3 install --upgrade pip pipenv \
