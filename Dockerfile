@@ -5,5 +5,6 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install libpython3-
   && cd /home/rstudio/keras \
   && . bin/activate \
   && pip install --upgrade pip keras tensorflow-gpu \
+  && rm -rf ~/.cache/pip \
   && install2.r --error keras reticulate \
   && echo "reticulate::use_virtualenv('/home/rstudio/keras')" >> ~/.Rprofile
