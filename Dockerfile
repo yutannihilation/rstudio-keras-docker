@@ -1,9 +1,9 @@
 FROM nvidia/cuda:9.0-runtime-ubuntu16.04
 
-RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" > /etc/apt/sources.list.d/r.list
-
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-  && add-apt-repository -y ppa:marutter/c2d4u \
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> /etc/apt/sources.list.d/r.list \
+  && echo "deb http://ppa.launchpad.net/marutter/c2d4u/ubuntu xenial main" >> /etc/apt/sources.list.d/r.list \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CF805866AEBD82665423554F4359ED62E084DAB9 \
   && apt-get update -qq \
   && apt-get -y --no-install-recommends install \
     r-base-dev \
